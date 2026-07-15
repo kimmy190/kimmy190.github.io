@@ -9,7 +9,7 @@ export interface ExperienceEntry {
   start: string;
   end: string;
   highlights: string[];
-  stack: string[];
+  stack?: string[];
 }
 
 export interface ProjectEntry {
@@ -17,7 +17,7 @@ export interface ProjectEntry {
   start: string;
   end: string;
   highlights: string[];
-  stack: string[];
+  stack?: string[];
   link?: string;
 }
 
@@ -123,7 +123,20 @@ export const experience: ExperienceEntry[] = [
      
     ],
     stack: ["HTML", "CSS", "JavaScript"],
+  },{
+    role: "UI/UX Tester",
+    org: "TechValet",
+    location: "Toronto, ON",
+    start: "Dec 2024",
+    end: "Jan 2025",
+    highlights: [
+      "Collaborated across a 7-person agile team to build the backend data layer for a mental health chatbot API on a Railway-hosted SQL database",
+      "Architected a relational schema with a precomputed, real-time user-statistics table, eliminating repeated multi-table aggregations in the Django ORM and cutting assessment data retrieval latency by 40%",
+      "Validated API reliability by designing Postman test suites covering HTTP response codes and payload structures across every endpoint",
+    ],
+    // stack: ["Django", "PostgreSQL", "Postman"],
   },
+
   {
     role: "Software Developer",
     org: "mHapy",
@@ -151,7 +164,7 @@ export const projects: ProjectEntry[] = [
       "Paired the Django backend with a React and Tailwind CSS frontend for a fast, responsive adopter experience",
     ],
     stack: ["Django", "React", "Tailwind CSS", "PostgreSQL"],
-    link: "https://github.com/kimmy190/Petpal",
+    // link: "https://github.com/kimmy190/Petpal",
   },
   {
     name: "Diabetes Data Visualization",
