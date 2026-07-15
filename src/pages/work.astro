@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import MobileNav from "../components/MobileNav.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
 import { experience } from "../data/site";
 ---
@@ -9,8 +10,10 @@ import { experience } from "../data/site";
   title="Work — Amy Kim"
   description="A detailed look at Amy Kim's work experience — full-stack development roles across freelance, university, and startup teams."
 >
-  <Header />
-  <div class="md:pl-56">
+  <MobileNav />
+  <div class="md:mx-auto md:flex md:max-w-6xl md:items-start md:gap-16 md:px-8">
+    <Sidebar />
+    <div class="min-w-0 flex-1">
   <main class="px-6 py-20">
     <div class="mx-auto max-w-3xl">
       <p class="reveal font-mono text-xs font-semibold tracking-widest text-accent-deep uppercase">$ ls work/</p>
@@ -60,5 +63,6 @@ import { experience } from "../data/site";
     </div>
   </main>
   <Footer />
+    </div>
   </div>
 </Layout>

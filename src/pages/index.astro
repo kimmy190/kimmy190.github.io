@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import MobileNav from "../components/MobileNav.astro";
+import Sidebar from "../components/Sidebar.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Skills from "../components/Skills.astro";
@@ -9,14 +10,17 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-  <Header />
-  <div class="md:pl-56">
-    <main>
-      <Hero />
-      <About />
-      <Skills />
-      <Contact />
-    </main>
-    <Footer />
+  <MobileNav />
+  <div class="md:mx-auto md:flex md:max-w-6xl md:items-start md:gap-16 md:px-8">
+    <Sidebar />
+    <div class="min-w-0 flex-1">
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   </div>
 </Layout>
