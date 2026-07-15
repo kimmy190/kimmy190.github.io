@@ -23,9 +23,7 @@ Tools/Frameworks: React, Node.js, Next.js, Django, Tailwind, Bootstrap, jQuery, 
 
 ## Web Developer                            June 2025 – Sept 2025 University of Toronto                Toronto, ON
 
-• Improved lab website’s cross-device user experience by building responsive React components and CSS layouts, resolving 10+ UI rendering defects across devices 
-• Reduced content publishing time by 60% by implementing self-service content pipeline that automatically renders uploaded qmd articles into HTML and deploys them to the lab website
-• Accelerated lab page load times by 30% by writing a custom JavaScript asset preprocessing pipeline that automated image/GIF compression 
+I developed the official course website for CS grad courses using Quarto, organizing 50+ lectures, assignments, and course resources into a responsive, easy-to-navigate web platform. In addition to implementing the website, I customized layouts and styling to improve usability while ensuring the site remained easy for instructors to update each semester.
 
 ## Software Developer                                 Jan 2025 – April 2025 
 

@@ -14,62 +14,80 @@ import { projects } from "../data/site";
   <div class="md:mx-auto md:flex md:max-w-6xl md:items-start md:gap-16 md:px-8">
     <Sidebar />
     <div class="min-w-0 flex-1">
-  <main class="px-6 py-20">
-    <div class="mx-auto max-w-3xl">
-      <p class="reveal font-mono text-xs font-semibold tracking-widest text-accent-deep uppercase">$ ls projects/</p>
-      <h1 class="reveal mt-3 text-3xl font-semibold text-ink md:text-4xl">Projects</h1>
-      <p class="reveal mt-4 max-w-xl leading-relaxed text-ink-muted">
-        Things I've built outside of work — some with teams, some solo.
-      </p>
+      <main class="relative px-6 py-20">
+        <div
+          class="pointer-events-none absolute inset-0 -z-10 opacity-35"
+          style="background-image: radial-gradient(var(--color-line) 1px, transparent 1px); background-size: 22px 22px;"
+        >
+        </div>
 
-      <div class="mt-14 space-y-14">
-        {
-          projects.map((project, i) => (
-            <article class="reveal relative pl-8">
-              <div class="absolute top-0 left-0 flex h-full w-8 flex-col items-center">
-                <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
-                {i !== projects.length - 1 && <span class="mt-1 w-px flex-1 bg-line" />}
-              </div>
+        <div class="mx-auto max-w-3xl">
+          <p class="reveal font-mono text-xs font-semibold tracking-widest text-accent-deep uppercase">
+            $ ls projects/
+          </p>
+          <h1 class="reveal mt-3 text-3xl font-semibold text-ink md:text-4xl">Projects</h1>
+          <p class="reveal mt-4 max-w-xl leading-relaxed text-ink-muted">
+            Things I've built outside of work — some with teams, some solo.
+          </p>
+        </div>
 
-              <p class="font-mono text-xs text-ink-muted">
-                {project.start} – {project.end}
-              </p>
-              <h2 class="mt-1 text-xl font-semibold text-ink">{project.name}</h2>
-
-              <p class="mt-4 leading-relaxed text-ink-muted">{project.narrative}</p>
-
-              <ul class="mt-4 space-y-2">
-                {project.bullets.map((bullet) => (
-                  <li class="flex gap-2 text-sm leading-relaxed text-ink-muted">
-                    <span class="mt-1 text-accent">▸</span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div class="mt-4 flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <span class="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs text-accent-deep">{tech}</span>
-                ))}
-              </div>
-
-              {project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
+        <div class="reveal mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-6 lg:grid-cols-2">
+          {
+            projects.map((project) => {
+              const Tag = project.link ? "a" : "div";
+              const linkAttrs = project.link
+                ? { href: project.link, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <Tag
+                  {...linkAttrs}
+                  class="group relative flex flex-col rounded-2xl border border-white/60 bg-white/35 p-6 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl"
                 >
-                  View repository ↗
-                </a>
-              )}
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </main>
-  <Footer />
+                  {project.link && (
+                    <span class="absolute top-5 right-5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/70 bg-white/60 text-ink transition-colors group-hover:bg-accent group-hover:text-cream">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                      </svg>
+                    </span>
+                  )}
+
+                  <p class="font-mono text-xs text-ink-muted">
+                    {project.start} – {project.end}
+                  </p>
+                  <h2 class="mt-1 pr-10 text-lg font-semibold text-ink">{project.name}</h2>
+
+                  <ul class="mt-4 space-y-2">
+                    {project.highlights.map((highlight) => (
+                      <li class="flex gap-2 text-sm leading-relaxed text-ink-muted">
+                        <span class="mt-1 text-accent">▸</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span class="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs text-accent-deep">{tech}</span>
+                    ))}
+                  </div>
+                </Tag>
+              );
+            })
+          }
+        </div>
+      </main>
+      <Footer />
     </div>
   </div>
 </Layout>

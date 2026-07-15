@@ -1,5 +1,7 @@
 ---
 import { profile } from "../data/site";
+import { siteConfig } from '../utils/site';
+
 ---
 
 <section id="top" class="relative overflow-hidden px-6 pt-20 pb-24 md:pt-28 md:pb-32">
@@ -14,14 +16,17 @@ import { profile } from "../data/site";
       <span class="text-ink-muted">$</span> whoami<span class="cursor-blink text-accent">_</span>
     </p>
     <h1 class="reveal mt-4 text-4xl font-semibold tracking-tight text-ink md:text-5xl">
-      Hi, I'm {profile.name}.
+      Hi there, I'm {profile.name}!
     </h1>
-    <p class="reveal mt-4 text-lg text-ink-muted md:text-xl">
-      {profile.role} · {profile.location}
-    </p>
-    <p class="reveal mt-6 max-w-xl text-base leading-relaxed text-ink-muted">
-      {profile.summary[0]}
-    </p>
+    
+    <p 
+    class="reveal mt-6 max-w-xl text-base leading-relaxed text-ink-muted"
+      set:html={profile.summary[0]}
+    />
+    <p 
+    class="reveal mt-6 max-w-xl text-base leading-relaxed text-ink-muted"
+      set:html={profile.summary[1]}
+    />
 
     <div class="reveal mt-8 flex flex-wrap gap-3">
       <a

@@ -19,7 +19,7 @@ import { experience } from "../data/site";
       <p class="reveal font-mono text-xs font-semibold tracking-widest text-accent-deep uppercase">$ ls work/</p>
       <h1 class="reveal mt-3 text-3xl font-semibold text-ink md:text-4xl">Work</h1>
       <p class="reveal mt-4 max-w-xl leading-relaxed text-ink-muted">
-        A closer look at the roles I've worked in — the problems I was solving and what I built to solve them.
+        A closer look at the roles I've worked in - the problems I was solving and what I built to solve them
       </p>
 
       <div class="mt-14 space-y-14">
@@ -40,13 +40,11 @@ import { experience } from "../data/site";
                 {job.location ? ` · ${job.location}` : ""}
               </p>
 
-              <p class="mt-4 leading-relaxed text-ink-muted">{job.narrative}</p>
-
               <ul class="mt-4 space-y-2">
-                {job.bullets.map((bullet) => (
+                {job.highlights.map((highlight) => (
                   <li class="flex gap-2 text-sm leading-relaxed text-ink-muted">
                     <span class="mt-1 text-accent">▸</span>
-                    <span>{bullet}</span>
+                    <span>{highlight}</span>
                   </li>
                 ))}
               </ul>
