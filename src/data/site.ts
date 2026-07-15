@@ -185,6 +185,7 @@ export const projects: ProjectEntry[] = [
       "Built an interactive Tableau dashboard surfacing early diabetes risk patterns across key health indicators, turning static spreadsheet data into an explorable visual tool",
     ],
     stack: ["Tableau", "R"],
+    link: "https://public.tableau.com/app/profile/amy.kim5641/viz/313project_17335805823240/Healthfactors2?publish=yes"
   },
   {
     name: "EBook",

@@ -26,7 +26,8 @@ pnpm-debug.log*
 # old design draft, kept locally only
 portfolio-arc/
 
-#all the md info file 
+#all the md info file
 AGENTS.md
 CLAUDE.md
 info.md
+README.md
