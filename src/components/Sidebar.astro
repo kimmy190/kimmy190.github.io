@@ -2,7 +2,7 @@
 const { pathname } = Astro.url;
 
 const navItems = [
-  { href: "/#about", label: "About" },
+  { href: "/", label: "Home", match: "/" },
   { href: "/work", label: "Work", match: "/work" },
   { href: "/projects", label: "Projects", match: "/projects" },
 ];
@@ -28,7 +28,7 @@ const isActive = (match?: string) => Boolean(match) && pathname === match;
         </a>
       ))
     }
-    <a href="/#contact" class="mt-6 text-ink-muted transition-colors hover:text-accent-deep">
+    <a href="/#contact" class="text-ink-muted transition-colors hover:text-accent-deep">
       Contact
     </a>
   </nav>

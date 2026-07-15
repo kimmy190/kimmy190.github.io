@@ -85,6 +85,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Freelance Full-Stack Developer",
     org: "Kelly Services",
+    location: "Toronto, ON",
     start: "June 2026",
     end: "Present",
     highlights: [
@@ -130,9 +131,7 @@ export const experience: ExperienceEntry[] = [
     start: "Dec 2024",
     end: "Jan 2025",
     highlights: [
-      "Collaborated across a 7-person agile team to build the backend data layer for a mental health chatbot API on a Railway-hosted SQL database",
-      "Architected a relational schema with a precomputed, real-time user-statistics table, eliminating repeated multi-table aggregations in the Django ORM and cutting assessment data retrieval latency by 40%",
-      "Validated API reliability by designing Postman test suites covering HTTP response codes and payload structures across every endpoint",
+        "Conducted structured usability testing with 6 participants for a software solutions website, synthesizing qualitative feedback into a formal usability report whose recommendations were applied to refine core user flows"
     ],
     // stack: ["Django", "PostgreSQL", "Postman"],
   },
@@ -154,9 +153,20 @@ export const experience: ExperienceEntry[] = [
 
 export const projects: ProjectEntry[] = [
   {
+    name: "Automated Job Search Agent",
+    start: "April 2026",
+    end: "May 2026",
+    highlights: [
+      "Built an automated Python pipeline that scrapes LinkedIn job postings and scores each one against a personal resume profile using the Claude API",
+      "Designed a custom AI scoring rubric to rank opportunities by fit, cutting out hours of manual screening",
+      "Wired the pipeline to push filtered, ranked results to a Google Sheet via the Sheets REST API, turning job search into an automated daily digest",
+    ],
+    stack: ["Python", "Claude API", "Google Sheets API"],
+  },
+    {
     name: "Petpal",
-    start: "Oct 2025",
-    end: "Jan 2026",
+    start: "Sept 2023",
+    end: "Dec 2023",
     highlights: [
       "Built a full-stack pet adoption platform with a team of four, connecting animal shelters with adopters end to end",
       "Engineered RESTful APIs powering real-time messaging between adopters and shelters, cutting communication response times by 40%",
@@ -164,7 +174,7 @@ export const projects: ProjectEntry[] = [
       "Paired the Django backend with a React and Tailwind CSS frontend for a fast, responsive adopter experience",
     ],
     stack: ["Django", "React", "Tailwind CSS", "PostgreSQL"],
-    // link: "https://github.com/kimmy190/Petpal",
+     link: "https://github.com/kimmy190/Petpal",
   },
   {
     name: "Diabetes Data Visualization",
@@ -177,15 +187,27 @@ export const projects: ProjectEntry[] = [
     stack: ["Tableau", "R"],
   },
   {
-    name: "Automated Job Search Agent",
-    start: "April 2026",
-    end: "May 2026",
+    name: "EBook",
+    start: "Sept 2023",
+    end: "Dec 2023",
     highlights: [
-      "Built an automated Python pipeline that scrapes LinkedIn job postings and scores each one against a personal resume profile using the Claude API",
-      "Designed a custom AI scoring rubric to rank opportunities by fit, cutting out hours of manual screening",
-      "Wired the pipeline to push filtered, ranked results to a Google Sheet via the Sheets REST API, turning job search into an automated daily digest",
+      "Built an ebook marketplace on a Spring Boot microservice architecture in a team of 8 — independent order, user, book, and third-party services registered through Eureka and routed via Spring Gateway with JWT authentication, backed by MySQL with Redis caching for hot data like index pages and sessions", 
+    "Delivered end-to-end user features across services: registration and role-based access (student, professor, admin), document upload and reading via AWS S3, PayPal-integrated checkout, and a ratings system surfacing top-ranked books"
     ],
-    stack: ["Python", "Claude API", "Google Sheets API"],
+    stack: ["Springboot","Spring Cloud (Gateway, Eureka, Feign)", "Redis", "MySQL", "Javascript", "HTML", "Bootstrap"],
+    // link: "hhttps://github.com/CSC207-2022F-UofT/course-project-e-booked",
+  },
+
+  {
+    name: "WorkSphere",
+    start: "Sept 2023",
+    end: "Dec 2023",
+    highlights: [
+      "Designed a workplace social-connection app from research to high-fidelity Figma prototype — conducting user interviews, defining user flows, and wireframing core interactions", 
+    "Validated and iterated the design through multi-stage usability testing with real participants, documenting feedback that reshaped each version"
+    ],
+    stack: ["Figma"],
+    link: "https://www.figma.com/proto/3QdxyKHY54U1t8hYwN4pIw/High-Fidelity-Prototype---CSC318?node-id=318-470&t=rHYLTGugAD5Twr0N-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=318%3A470&show-proto-sidebar=1",
   },
 ];
 
