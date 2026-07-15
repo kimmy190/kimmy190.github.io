@@ -1,31 +1,24 @@
 ---
+const { pathname } = Astro.url;
+
 const navItems = [
   { href: "/#about", label: "About" },
-  { href: "/work", label: "Work" },
-  { href: "/projects", label: "Projects" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/work", label: "Work", match: "/work" },
+  { href: "/projects", label: "Projects", match: "/projects" },
 ];
+const isActive = (match?: string) => Boolean(match) && pathname === match;
 ---
 
-<header class="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur">
-  <div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+<!-- Mobile top bar -->
+<header class="sticky top-0 z-50 border-b border-line/70 bg-cream/85 backdrop-blur md:hidden">
+  <div class="flex items-center justify-between px-6 py-4">
     <a href="/" class="font-mono text-sm font-semibold tracking-tight text-ink">
       amy<span class="text-accent">.</span>dev
     </a>
 
-    <nav class="hidden items-center gap-8 md:flex">
-      {
-        navItems.map((item) => (
-          <a href={item.href} class="text-sm text-ink-muted transition-colors hover:text-accent-deep">
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
-
     <button
       id="nav-toggle"
-      class="flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink md:hidden"
+      class="flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink"
       aria-label="Toggle navigation menu"
       aria-expanded="false"
       aria-controls="mobile-nav"
@@ -63,7 +56,7 @@ const navItems = [
     </button>
   </div>
 
-  <nav id="mobile-nav" class="hidden grid gap-1 border-t border-line/70 px-6 py-3 md:hidden">
+  <nav id="mobile-nav" class="hidden grid gap-1 border-t border-line/70 px-6 py-3">
     {
       navItems.map((item) => (
         <a
@@ -74,8 +67,40 @@ const navItems = [
         </a>
       ))
     }
+    <a
+      href="/#contact"
+      class="mt-2 rounded-md px-2 py-2.5 text-sm text-ink-muted transition-colors hover:bg-accent-soft hover:text-accent-deep"
+    >
+      Contact
+    </a>
   </nav>
 </header>
+
+<!-- Desktop sidebar -->
+<aside class="hidden md:fixed md:inset-y-0 md:left-0 md:z-50 md:flex md:w-56 md:flex-col md:border-r md:border-line/70 md:px-8 md:py-10">
+  <a href="/" class="inline-flex flex-col items-start gap-3">
+    <span class="flex h-7 w-7 items-center justify-center rounded-md bg-accent font-mono text-xs font-semibold text-cream">
+      A
+    </span>
+    <span class="font-mono text-sm font-semibold tracking-tight text-ink">amy.dev</span>
+  </a>
+
+  <nav class="mt-10 flex flex-col gap-3 text-sm">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`transition-colors hover:text-accent-deep ${isActive(item.match) ? "font-medium text-ink" : "text-ink-muted"}`}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a href="/#contact" class="mt-6 text-ink-muted transition-colors hover:text-accent-deep">
+      Contact
+    </a>
+  </nav>
+</aside>
 
 <script>
   const toggle = document.getElementById("nav-toggle");
