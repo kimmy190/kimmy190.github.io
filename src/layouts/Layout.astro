@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Amy Kim — Full-Stack Developer",
+  description = "Portfolio of Amy Kim, a full-stack developer based in Toronto specializing in Python, JavaScript/TypeScript, React, and Django.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <meta name="theme-color" content="#faf8f2" />
+  </head>
+  <body class="bg-cream text-ink antialiased">
+    <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
