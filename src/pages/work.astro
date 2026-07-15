@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { experience } from "../data/site";
+---
+
+<Layout
+  title="Work — Amy Kim"
+  description="A detailed look at Amy Kim's work experience — full-stack development roles across freelance, university, and startup teams."
+>
+  <Header />
+  <main class="px-6 py-20">
+    <div class="mx-auto max-w-3xl">
+      <p class="reveal font-mono text-xs font-semibold tracking-widest text-accent-deep uppercase">$ ls work/</p>
+      <h1 class="reveal mt-3 text-3xl font-semibold text-ink md:text-4xl">Work</h1>
+      <p class="reveal mt-4 max-w-xl leading-relaxed text-ink-muted">
+        A closer look at the roles I've worked in — the problems I was solving and what I built to solve them.
+      </p>
+
+      <div class="mt-14 space-y-14">
+        {
+          experience.map((job, i) => (
+            <article class="reveal relative pl-8">
+              <div class="absolute top-0 left-0 flex h-full w-8 flex-col items-center">
+                <span class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
+                {i !== experience.length - 1 && <span class="mt-1 w-px flex-1 bg-line" />}
+              </div>
+
+              <p class="font-mono text-xs text-ink-muted">
+                {job.start} – {job.end}
+              </p>
+              <h2 class="mt-1 text-xl font-semibold text-ink">{job.role}</h2>
+              <p class="text-sm text-ink-muted">
+                {job.org}
+                {job.location ? ` · ${job.location}` : ""}
+              </p>
+
+              <p class="mt-4 leading-relaxed text-ink-muted">{job.narrative}</p>
+
+              <ul class="mt-4 space-y-2">
+                {job.bullets.map((bullet) => (
+                  <li class="flex gap-2 text-sm leading-relaxed text-ink-muted">
+                    <span class="mt-1 text-accent">▸</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {job.stack.map((tech) => (
+                  <span class="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs text-accent-deep">{tech}</span>
+                ))}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
